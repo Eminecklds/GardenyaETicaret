@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GardenyaGirisimciKadinlar.Models.Urunler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_GirisimciLayout.cshtml";
+}
+
+
+<h3 class="fw-title">Ürünlerim</h3>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AltKategori.AltKategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Adet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Resim)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltKategori.AltKategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Adet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+
+        <td>
+            <img src="@item.Resim" width="100" height="100" />
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.UrunID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.UrunID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.UrunID })
+        </td>
+    </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Ürün Oluştur", "Create")
+</p>

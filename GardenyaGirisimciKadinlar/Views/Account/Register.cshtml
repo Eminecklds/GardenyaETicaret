@@ -1,0 +1,110 @@
+﻿@model GardenyaGirisimciKadinlar.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Kayıt Formu</h2>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()     
+                    {
+                        Model.UserRole = ViewBag.GelenRole;
+                    }
+
+
+
+
+                       @Html.HiddenFor(m => m.UserRole)
+
+
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.Ad, htmlAttributes: new { @class = "label" })
+                        @Html.EditorFor(model => model.Ad, new { htmlAttributes = new { @class = "input--style-4" } })
+                        @Html.ValidationMessageFor(model => model.Ad, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.Soyad, htmlAttributes: new { @class = "label" })
+                        @Html.EditorFor(model => model.Soyad, new { htmlAttributes = new { @class = "input--style-4" } })
+                        @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input--style-4" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "label" })
+                        @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "input--style-4" } })
+                        @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                @Html.LabelFor(model => model.Adres, htmlAttributes: new { @class = "label" })
+                <div class="rs-select2 js-select-simple select--no-search">
+                    @Html.EditorFor(model => model.Adres, new { htmlAttributes = new { @class = "input--style-4" } })
+                    @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row row-space">
+
+                <div class="input-group js-input-file">
+                    @*@Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "label" })*@
+                    <input id="file" type="file" name="file" class="input-file" />
+                    <label class="label--file" for="file">Profil Resmi Seç</label>
+                    <span class="input-file__info">Resim Seçilmedi</span>
+                </div>
+
+            </div>
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input--style-4" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row row-space">
+                <div class="col-2">
+                    <div class="input-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input--style-4" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="p-t-15">
+                <input type="submit" value="Kayıt Ol" class="btn btn--radius-2 btn--blue" />
+            </div>
+
+
+        }
+
+
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
+            </div>
+                </div>
+    </div>
+</div>

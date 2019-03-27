@@ -1,0 +1,80 @@
+﻿@model GardenyaGirisimciKadinlar.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_KullaniciLayout.cshtml";
+}
+
+<div style="margin-left:20px;">
+    <h4>Profil Düzenle</h4>
+    <hr />
+
+    @using (Html.BeginForm("Edit", "Liste", FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+    {
+        @*@Html.AntiForgeryToken()*@
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @Html.HiddenFor(model => model.Id)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soyad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Soyad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="input-group js-input-file">
+                    <input id="file" type="file" name="file" class="input-file" />
+                    <label class="label--file" for="file">Profil Resmi Seç</label>
+                    <span class="input-file__info">Resim Seçilmedi</span>
+                </div>
+                @*@Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="site-btn" />
+            </div>
+        </div>
+    </div>
+    }
+
+        
+    </div>

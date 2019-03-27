@@ -1,0 +1,43 @@
+﻿@model GardenyaGirisimciKadinlar.Models.Kategori
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-6 " style="margin-left:30px !important;">
+    <h3 class="fw-title">Kategori Sil</h3>
+    <br />
+    <br />
+    <h6>Silmek istediğinize emin misiniz?</h6>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriLink)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="site-btn" /> |
+            @Html.ActionLink("Kategori Listesi", "Index")
+        </div>
+    }
+</div>

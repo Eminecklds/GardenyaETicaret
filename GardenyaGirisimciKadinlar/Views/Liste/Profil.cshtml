@@ -1,0 +1,64 @@
+﻿@model GardenyaGirisimciKadinlar.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_KullaniciLayout.cshtml";
+}
+
+
+
+<div style="margin-left:20px;">
+    <h4>Profilim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <img src="../Upload/Profil/@Html.DisplayFor(model => model.Resim)" width="200" height="200" class="profil" />
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UyelikTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UyelikTarihi)
+        </dd>
+
+    </dl >
+</div>
+<div class=" row col-lg-12" >
+    <p style="margin-left:15px;display:block;margin-top:10px;">
+        @Html.ActionLink("Düzenle", "Edit", "Liste", new { id = Model.Id, @class = "btn btn-warning btn--radius" }) 
+    </p>
+</div>

@@ -1,0 +1,104 @@
+﻿@model GardenyaGirisimciKadinlar.Models.ShoppingCardViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+@* Add to cart yada remove kart yaptığımda sepeti güncelleme işlemi jquery olmalı *@
+<script type="text/javascript">
+    $(function () {
+        $(".RemoveLink").click(function () {
+            //Linkteki id yi yakalamak için
+            var silinecekid = $(this).attr("data-id");
+            if (silinecekid != '') {
+                //null değilse post işlemi başlamalı
+                $.post("/ShoppingCart/RemoveToCart", { "id": silinecekid },
+                    //eğer başarılıysa post
+                    function (data) {
+                        //sepeti güncelle
+                        if (data.ItemCount == 0) {
+                            $("#item-count-" + data.Deleteid).fadeOut('slow');
+                        } else {
+                            $("#item-count-" + data.Deleteid).text(data.ItemCount);
+                        }
+                        $("$cart-total").text(data.CartTotal);
+                        $("#update-message").text(data.Message);
+                        $("#cart-status").text('Cart(' + data.CartCount + ')');
+                    }
+                )
+            }
+            //$("#cartdetail").load("/ShoppingCart/Index/");
+            location.reload();
+        });
+    });
+
+    //$(function () {
+    //    $("#count").click(function () {
+    //        var count = document.getElementById("#count").value;
+    //        var fiyat = document.getElementById("#fiyat").value;
+            
+    //        document.getElementById("#araFiyat").value = count * fiyat;
+    //    });
+    //    });
+
+</script>
+
+<section class="cart-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-table">
+                    <h3>Sepetim</h3>
+                    <div class="cart-table-warp">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product-th">Ürün Adı</th>
+                                    <th class="quy-th">Adet</th>
+                                    <th class="size-th">Ara Toplam</th>
+                                    <th class="total-th"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <tr id="row-@item.RecordID">
+                                        <td class="product-col">
+                                            <img src="../@Html.DisplayFor(modelItem => item.Urunler.Resim)" alt="">
+                                            <div class="pc-title">
+                                                <h4> @Html.DisplayFor(modelItem => item.Urunler.Baslik)</h4>
+                                                <p> @Html.DisplayFor(modelItem => item.Urunler.Fiyat)<span class="simge-tl">&#8378;</span></p>
+                                            </div>
+                                        </td>
+                                        <td class="quy-col">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="text" value="@Html.DisplayFor(modelItem => item.Count)"  >
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="size-col"><h4>@Html.DisplayFor(modelItem => item.SubTotal )<span class="simge-tl">&#8378;</span></h4></td>
+                                        <td class="total-col"><h4>
+                                             
+                         
+                                             </h4></td>
+                                    </tr>
+                                }
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="total-cost">
+                        <h6>Toplam <span>@Model.CartTotal</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 card-right">
+
+                <a href="" class="site-btn">Siparişi Tamamla</a>
+                <a href="" class="site-btn sb-dark">Alışverişe Devam Et</a>
+            </div>
+        </div>
+    </div>
+</section>

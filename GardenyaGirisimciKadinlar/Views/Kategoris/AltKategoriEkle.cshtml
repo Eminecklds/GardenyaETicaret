@@ -1,0 +1,49 @@
+﻿@model GardenyaGirisimciKadinlar.Models.KategoriAltkategoriViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "AltKategoriEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3 class="fw-title">@Html.DisplayFor(model => model.KategoriAdi)</h3>
+<br />
+
+@using (Html.BeginForm(new { @class = "contact-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.KategoriID)
+<div style="margin-top:50px !important;">
+    <h5>Alt Kategori Ekle</h5>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.AltKategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AltKategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AltKategoriAdi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AltKategoriLink, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AltKategoriLink, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AltKategoriLink, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ekle" class="site-btn" />
+        </div>
+    </div>
+</div>
+
+}<div>
+    @Html.ActionLink("Alt Kategoriler Listesi", "Details", new { id = ViewBag.KID })
+</div>
+
+

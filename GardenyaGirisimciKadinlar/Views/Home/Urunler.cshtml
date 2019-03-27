@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GardenyaGirisimciKadinlar.Models.Urunler>
+
+<section class="product-filter-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>BROWSE TOP SELLING PRODUCTS</h2>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="../@Html.DisplayFor(modelItem => item.Resim)" alt="" height="300px !important">
+                            <div class="pi-links">
+                                <a href="@Url.Action("UrunDetay", "Home", new { id = item.UrunID })" class="add-card"><i class="flaticon-bag"></i><span> Ürünü İncele</span></a>
+                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                            </div>
+                        </div>
+                        <div class="pi-text">
+                            <h6> @Html.DisplayFor(modelItem => item.Fiyat)<span class="simge-tl">&#8378;</span></h6>
+                            <p> @Html.DisplayFor(modelItem => item.Baslik)</p>
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+        <ul class="product-filter-menu" style="margin-top:50px;">
+            @foreach (var item in ViewBag.Kategoriler)
+            {
+                <li><a href="#">@item.AltKategoriAdi</a></li>
+            }
+
+        </ul>
+    </div>
+</section>
+

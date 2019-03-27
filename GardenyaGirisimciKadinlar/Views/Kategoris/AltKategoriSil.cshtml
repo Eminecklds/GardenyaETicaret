@@ -1,0 +1,51 @@
+﻿@model GardenyaGirisimciKadinlar.Models.AltKategori
+
+@{
+    ViewBag.Title = "AltKategoriSil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-6 " style="margin-left:30px !important;">
+    <h3 class="fw-title">AltKategori Sil</h3>
+    <br />
+    <br />
+    <h6>Silmek istediğinize emin misiniz?</h6>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AltKategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltKategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AltKategoriLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltKategoriLink)
+        </dd>
+
+        <dt>
+            Kategori Adı
+        </dt>
+
+        <dd>
+            @ViewBag.KAD
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="site-btn" /> |
+
+            @Html.ActionLink("Alt Kategoriler Listesi", "Details", new { id = Model.KategoriID })
+        </div>
+    }
+</div>

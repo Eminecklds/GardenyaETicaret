@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GardenyaGirisimciKadinlar.Models.Urunler>
+
+@{
+    ViewBag.Title = "TumUrunler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="fw-title">Tüm Ürünler</h3>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Resim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EklenmeTarihi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            <img src="@item.Resim" width="100" height="100" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+        </td>
+        <td>
+
+            @Html.ActionLink("Detaylar", "Details", new { id = item.UrunID }) 
+        </td>
+        @*Ürünleri listeleyecek detaylara tıkladığında girişimci bilgileri ve kategori adı gelicek Aktif ve ya pasif yapabilcek*@
+    </tr>
+    }
+
+</table>

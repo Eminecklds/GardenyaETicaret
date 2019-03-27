@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GardenyaGirisimciKadinlar.Models.Kategori>
+
+<nav class="main-navbar">
+    <div class="container">
+        <!-- menu -->
+        <ul class="main-menu">
+
+            @foreach (var item in Model)
+            {
+                <li><a href="#">@item.KategoriAdi</a></li>
+
+            }
+        </ul>
+    </div>
+</nav>

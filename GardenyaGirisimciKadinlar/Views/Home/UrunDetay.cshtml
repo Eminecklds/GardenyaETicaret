@@ -1,0 +1,70 @@
+﻿@model GardenyaGirisimciKadinlar.Models.UrunlerGirisimciAltKatViewModel
+
+@{
+    ViewBag.Title = "UrunDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="product-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div @*class="product-pic-zoom"*@>
+                    <img src="../@Html.DisplayFor(modelItem => Model.Resim)" class="product-big-img"alt="">
+                </div>
+
+            </div>
+            <div class="col-lg-6 product-details">
+                <h2 class="p-title">@Html.DisplayFor(model => model.Baslik)</h2>
+                <h3 class="p-price">@Html.DisplayFor(model => model.Fiyat)<span class="simge-tl">&#8378;</span></h3>
+                <h4 class="p-stock">Kategori: @Html.DisplayFor(model => model.AltKategoriAdi)</h4>
+                <div class="p-rating">
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o fa-fade"></i>
+                </div>
+
+                @*</div>*@
+                @using (Html.BeginForm("AddToCart", "ShoppingCart"))
+                {
+                    <div class="quantity">
+                        <p>Adet</p>
+                        <div class="pro-qty">
+                            @*<input type="text" value="1" name="@Html.DisplayFor(model => model.Adet)">*@
+                            @Html.EditorFor(model => model.Adet)
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.UrunID)
+                    @*@Html.ActionLink("Sepete Ekle", "AddToCart", "ShoppingCart", htmlAttributes: new { @class = "site-btn" })*@
+                    <input type="submit" value="Sepete Ekle" class="site-btn" />
+                }
+   
+                <div id="accordion" class="accordion-area">
+                    <div class="panel">
+                        <div class="panel-header" id="headingOne">
+                            <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Ürün Bİlgileri</button>
+                        </div>
+                        <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="panel-body">
+                                @Html.DisplayFor(model => model.Aciklama)
+                                <br />
+                                Girişimci Adı:@Html.DisplayFor(model => model.GirisimciAdi)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="social-sharing">
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-pinterest"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+    </div>
+    </div>
+</section>

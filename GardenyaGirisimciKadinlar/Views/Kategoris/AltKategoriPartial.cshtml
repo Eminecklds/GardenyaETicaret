@@ -1,0 +1,52 @@
+﻿@model IEnumerable<GardenyaGirisimciKadinlar.Models.KategoriAltkategoriViewModel>
+
+<div style="margin-top:50px !important">
+    <h4>Alt Kategoriler</h4>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AltKategoriAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltKategoriLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KategoriAdi)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.AltKategoriAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.AltKategoriLink)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.KategoriAdi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "AltKategoriDuzenle", new { id = item.KategoriID, kid = item.AltKategoriID }) |
+                    @Html.ActionLink("Sil", "AltKategoriSil", new { id = item.KategoriID, kid = item.AltKategoriID })
+                </td>
+            </tr>
+
+        }
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+
+                @Html.ActionLink("Alt Kategori Oluştur", "AltKategoriEkle", new { id = ViewBag.KID })
+            </td>
+        </tr>
+
+    </table>
+
+</div>
