@@ -179,6 +179,8 @@
     <Compile Include="Controllers\ListeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\SiparisController.cs" />
+    <Compile Include="Controllers\UrunlerKategoriController.cs" />
     <Compile Include="Controllers\UrunlersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -312,6 +314,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\AngularJS\Module.js" />
+    <Content Include="Scripts\AngularJS\Service.js" />
+    <Content Include="Scripts\AngularJS\UrunController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\icon-fonts\Flaticon.eot" />
@@ -339,6 +344,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\Angular\Module.js" />
+    <Content Include="Scripts\js\Angular\Service.js" />
+    <Content Include="Scripts\js\Angular\UrunlerController.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
     <Content Include="Scripts\js\jquery-3.2.1.min.js" />
     <Content Include="Scripts\js\jquery-ui.min.js" />
@@ -413,11 +421,16 @@
     <Content Include="Views\Home\UrunDetay.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Shared\_KategoriLayout.cshtml" />
+    <Content Include="Views\UrunlerKategori\AltKategoriler.cshtml" />
+    <Content Include="Views\UrunlerKategori\Index.cshtml" />
+    <Content Include="Views\UrunlerKategori\Urunler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Upload\Products\" />
     <Folder Include="Upload\Profil\" />
+    <Folder Include="Views\Siparis\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

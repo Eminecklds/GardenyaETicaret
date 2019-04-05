@@ -19,6 +19,18 @@ namespace GardenyaGirisimciKadinlar.Controllers
             
             return PartialView(db.Kategoris.ToList());
         }
+
+        public ActionResult getUrunler()
+        {
+            
+            return PartialView(db.Urunlers.Take(5).ToList());
+        }
+        public ActionResult getUrunlerID()
+        {
+            
+            return PartialView(db.Urunlers.Take(5).ToList());
+        }
+
         public ActionResult Urunler()
         {
             ViewBag.Kategoriler = db.AltKategoris.ToList();

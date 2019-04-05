@@ -1,0 +1,75 @@
+﻿@model IEnumerable<GardenyaGirisimciKadinlar.Models.Urunler>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AltKategori.AltKategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SatılanAdet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EklenmeTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GirisimciID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltKategori.AltKategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SatılanAdet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GirisimciID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UrunID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UrunID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UrunID })
+        </td>
+    </tr>
+}
+
+</table>

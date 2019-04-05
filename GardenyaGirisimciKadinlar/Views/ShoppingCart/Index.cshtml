@@ -96,8 +96,9 @@
             </div>
             <div class="col-lg-4 card-right">
 
-                <a href="" class="site-btn">Siparişi Tamamla</a>
-                <a href="" class="site-btn sb-dark">Alışverişe Devam Et</a>
+                @*<a href="" class="site-btn">Siparişi Tamamla</a>*@
+                @Html.ActionLink("Siparişi Tamamla", "SiparisiTamamla","Siparis", new { model=Model }, new { @class = "site-btn" })
+                <a href="/Home/Index" class="site-btn sb-dark">Alışverişe Devam Et</a>
             </div>
         </div>
     </div>
