@@ -200,6 +200,10 @@ namespace GardenyaGirisimciKadinlar.Controllers
                     var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                     role.Name = "Admin";
                     RoleManager.Create(role);
+                    var admin = new ApplicationUser {UserName="Admin",Email="admin@gmailcom",Ad="Admin",Soyad="Admin",UserRole="Admin",PhoneNumber="55555555" };
+                    var pass = await UserManager.CreateAsync(admin, "Admin-98");
+                    await SignInManager.SignInAsync(admin, isPersistent: false, rememberBrowser: false);
+                    await this.UserManager.AddToRoleAsync(admin.Id, "Admin");
                 }
                 if (!RoleManager.RoleExists("User"))
                 {

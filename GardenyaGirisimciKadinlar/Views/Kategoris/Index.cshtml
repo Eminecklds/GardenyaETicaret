@@ -30,7 +30,11 @@
             </td>
             <td>
                 @Html.ActionLink("Düzenle", "Edit", new { id = item.KategoriID }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.KategoriID }) |
+                @if (item.KategoriAdi != "Anasayfa")
+                {
+                    @Html.ActionLink("Sil", "Delete", new { id = item.KategoriID })<span>&nbsp;|</span>
+                } 
+
                 @Html.ActionLink("Alt Kategoriler", "Details", new { id = item.KategoriID })
             </td>
         </tr>

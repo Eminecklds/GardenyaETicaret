@@ -15,12 +15,18 @@ namespace GardenyaGirisimciKadinlar.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Kategoris
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(db.Kategoris.ToList());
         }
 
         // GET: Kategoris/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,6 +49,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
             ViewBag.KAD = kategori.KategoriAdi;
             return View(kategori);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AltKategoriPartial(int? id)
         {
             if (id == null)
@@ -72,8 +79,13 @@ namespace GardenyaGirisimciKadinlar.Controllers
             ViewBag.KAD = ad.KategoriAdi;
             return PartialView(result);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AltKategoriEkle(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             if (id == null)
             {
                 if (ViewBag.KID==null)
@@ -113,10 +125,16 @@ namespace GardenyaGirisimciKadinlar.Controllers
             return View("Details");
         }
         // GET: Kategoris/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AltKategoriDuzenle(int? id,int? kid)
         {
             if (kid == null)
@@ -168,6 +186,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
             ViewBag.KAD = ktgr.KategoriAdi;
             return View("Details");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AltKategoriSil(int? id, int? kid)
         {
             if (kid == null)

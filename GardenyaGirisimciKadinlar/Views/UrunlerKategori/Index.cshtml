@@ -4,104 +4,66 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_KategoriLayout.cshtml";
 }
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/js/Angular/Module.js"></script>
-<script src="~/Scripts/js/Angular/Service.js"></script>
-<script src="~/Scripts/js/Angular/UrunlerController.js"></script>
-<section class="category-section spad2" ng-app="myapp" data-ng-controller="myCtrl">
+
+<section class="category-section spad2">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 order-2 order-lg-1" style="margin-right:20px !important">
                 <div class="filter-widget">
-               
+
                     <ul class="category-menu">
 
                         @foreach (var item in Model)
                         {
 
-                        <li>
-                            @*<form>
-            <input type="text" value="item.AltKategoriID" />
+                            <li>
+                                @Html.ActionLink(item.AltKategoriAdi, "Index", new { id = item.KategoriID, kid = item.AltKategoriID }, new { @class = "urun" })                             
+                            </li>
 
-            @Html.Hidden("kid", item.AltKategoriID)
-            <input type="submit" class="urun" value="@item.AltKategoriAdi" />
-        </form>*@
-                            <a href="" ng-click="GetUrun(@item.AltKategoriID)">@item.AltKategoriAdi</a>
-                                                    @*@Html.ActionLink(item.AltKategoriAdi, "UrunlerListesi", new { kid = item.AltKategoriID }, new { @class = "urun" })*@
-                                                    @*@Html.ActionLink(item.AltKategoriAdi, "UrunlerListesi", new { id = item.AltKategoriID })*@
-
-                                                </li>
-
-                            @*@ViewBag.ID= item.KategoriID;*@
                         }
 
 
                     </ul>
 
 
-                        
+
                 </div>
             </div>
 
             <div class="col-lg-8  order-2 order-lg-2 mb-5 mb-lg-0">
-                <div class="row" id="urunler" ng-repeat="item in urun">
-                    <div class="col-lg-3 col-sm-6" ng-show="item.UrunID">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="../{{item.Resim}}" alt="" height="300px !important">
-                                <div class="pi-links">
-                                    @ViewBag.UID={ { item.UrunID } }
-                                    @*<a href="@Url.Action("UrunDetay", "Home", new { id = ViewBag.UID)" class="add-card"><i class="flaticon-bag"></i><span> Ürünü İncele</span></a>*@
-                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                <div class="container product-filter-section" >
+                    <div class="row">
+                        @if (ViewBag.urunler!=null)
+	                       {
+	
+                        foreach (var item in ViewBag.urunler)
+                        {
+                            <div class="col-lg-4 col-sm-8">
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <img src="../@item.Resim" alt="" height="300px !important" >
+                                        <div class="pi-links">
+                                            <a href="@Url.Action("UrunDetay", "Home", new { id = item.UrunID })" class="add-card"><i class="flaticon-bag"></i><span> Ürünü İncele</span></a>
+                                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="pi-text">
+                                        <h6> @item.Fiyat<span class="simge-tl">&#8378;</span></h6>
+                                        <p> @item.Baslik</p>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="pi-text">
-                                <h6> {{item.Fiyat}}<span class="simge-tl">&#8378;</span></h6>
-                                <p> {{item.Baslik}}</p>
-                            </div>
+                        }	}
 
-                        </div>
                     </div>
-                    @*@{Html.RenderAction("Urunler","UrunlerKategori",new { id=11});}*@
 
-
-
-                    @*<script>
-            $(function () {
-                $(".urun").click(
-                    function () {
-                        $.ajax({
-                            type: "Get",
-                            url: "UrunlerListesi",
-                            contectType: "application/json;charset=utf-8",
-                            dataType: "json",
-                            success: function (e) {
-                                alert(e.UrunAdi);
-                                alert(e.Fiyat);
-                            }
-                        });
-                    });
-            });
-        </script>*@
-                    @*<script type="text/javascript">
-            $(function () {
-                $('.urun').click(function () {
-                    $.getJSON("/UrunlerKategori/UrunlerListesi", null, function (data) {
-                        jQuery.each(data, function (i, eleman) {
-                            var listeler = "<div class='col-lg - 3 col - sm - 6'>< div class='product-item' > <div class='pi-pic'>";
-                            listeler += " <img src='../" + eleman.Resim + "' alt='' height='300px !important'> <div class='pi - links'>";
-                            listeler += "<a href='/Home/UrunDetay/" + eleman.UrunID + "' class='add-card'><i class='flaticon-bag'></i><span> Ürünü İncele</span></a";
-                            listeler += "<a href='#' class='wishlist - btn'><i class='flaticon - heart'></i></a> </div ></div > <div class='pi - text'>";
-                            listeler += "<h6>" + eleman.Fiyat + "<span class='simge - tl'>&#8378;</span></h6><p>" + eleman.Baslik +"</p></div></div> </div>";
-                            $("#urunler").append(listeler);
-                        });
-                    });
-                });
-            });
-        </script>*@
 
                 </div>
             </div>
+
+
+
         </div>
     </div>
 </section>

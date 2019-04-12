@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201903270722404_subtotal.Designer.cs">
       <DependentUpon>201903270722404_subtotal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904111205041_admin.cs" />
+    <Compile Include="Migrations\201904111205041_admin.Designer.cs">
+      <DependentUpon>201904111205041_admin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AltKategori.cs" />
@@ -314,9 +318,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\AngularJS\Module.js" />
-    <Content Include="Scripts\AngularJS\Service.js" />
-    <Content Include="Scripts\AngularJS\UrunController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\icon-fonts\Flaticon.eot" />
@@ -344,9 +345,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\js\Angular\Module.js" />
-    <Content Include="Scripts\js\Angular\Service.js" />
-    <Content Include="Scripts\js\Angular\UrunlerController.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
     <Content Include="Scripts\js\jquery-3.2.1.min.js" />
     <Content Include="Scripts\js\jquery-ui.min.js" />
@@ -472,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903270722404_subtotal.resx">
       <DependentUpon>201903270722404_subtotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111205041_admin.resx">
+      <DependentUpon>201904111205041_admin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

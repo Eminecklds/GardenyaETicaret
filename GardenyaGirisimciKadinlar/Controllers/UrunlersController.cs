@@ -18,29 +18,36 @@ namespace GardenyaGirisimciKadinlar.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Urunlers
+        [Authorize(Roles = "Admin")]
         public ActionResult TumUrunler()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var urunlers = db.Urunlers.Include(u => u.AltKategori);
-            //Bu kısmı detayda ki ürün aktif pasif için yazdım ama kullanmadım
-            //var liste=from u in db.Urunlers join
-            //            k in db.Users on u.GirisimciID equals k.Id select new UrunlerGirisimciAltKatViewModel
-            //            {
 
-            //            }
             return View(urunlers.ToList());
         }
+        [Authorize(Roles = "Girisimci")]
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var userid = User.Identity.GetUserId();
             
-            //var urunlers = db.Urunlers.Include(u => u.AltKategori);
+
             var urunlers = db.Urunlers.Where(x=>x.GirisimciID==userid).ToList();
             return View(urunlers.ToList());
         }
 
         // GET: Urunlers/Details/5
+        [Authorize(Roles = "Girisimci")]
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -56,8 +63,13 @@ namespace GardenyaGirisimciKadinlar.Controllers
         }
 
         // GET: Urunlers/Create
+        [Authorize(Roles = "Girisimci")]
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             ViewBag.AltKategoriID = new SelectList(db.AltKategoris, "AltKategoriID", "AltKategoriAdi");
             //var userid = User.Identity.GetUserId();
 
@@ -97,6 +109,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
         }
 
         // GET: Urunlers/Edit/5
+        [Authorize(Roles = "Girisimci")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

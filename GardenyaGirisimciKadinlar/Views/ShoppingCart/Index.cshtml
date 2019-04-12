@@ -80,10 +80,11 @@
                                             </div>
                                         </td>
                                         <td class="size-col"><h4>@Html.DisplayFor(modelItem => item.SubTotal )<span class="simge-tl">&#8378;</span></h4></td>
-                                        <td class="total-col"><h4>
-                                             
-                         
-                                             </h4></td>
+                                        <td class="total-col">
+                                            <a href="#" class="RemoveLink btn " data-id="@item.RecordID">
+                                                İptal Et
+                                            </a><h4></h4>
+                                        </td>
                                     </tr>
                                 }
                                 </tbody>

@@ -13,6 +13,10 @@
                 }
             </li>
             <li>
+                @if (true)
+                {
+
+                }
                 @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
@@ -22,14 +26,7 @@
 else
 {
 
-    @*<div class="up-item">
-            <i class="flaticon-profile"></i>
-            <a href="@Url.Action("Register", "Account",new { Role=0 })">Kullanıcı Giriş</a>
-        </div>
-        <div class="up-item">
-            <i class="flaticon-profile"></i>
-            <a href="@Url.Action("Register", "Account",new { Role=1 })">Girişimci Giriş</a>
-        </div>*@
+
     <div class="up-item">
         <i class="flaticon-profile"></i>
         @Html.ActionLink("Kullanıcı Giriş", "Login", "Account")

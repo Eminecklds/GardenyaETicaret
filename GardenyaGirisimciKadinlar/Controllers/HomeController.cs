@@ -12,6 +12,8 @@ namespace GardenyaGirisimciKadinlar.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
+            var result = (from u in db.Urunlers orderby u.EklenmeTarihi descending select u).Take(7).ToList();
+            ViewBag.EnYeni = result;
             return View();
         }
         public ActionResult Menu()
@@ -34,7 +36,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
         public ActionResult Urunler()
         {
             ViewBag.Kategoriler = db.AltKategoris.ToList();
-            return PartialView(db.Urunlers.Take(10).ToList());
+            return PartialView(db.Urunlers.Take(30).ToList());
         }
         public ActionResult UrunDetay(int? id)
         {          ViewBag.Adet = 1;

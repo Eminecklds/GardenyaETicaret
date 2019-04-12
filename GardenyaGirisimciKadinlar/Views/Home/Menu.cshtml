@@ -7,7 +7,17 @@
 
             @foreach (var item in Model)
             {
-                <li><a href="#">@item.KategoriAdi</a></li>
+                if (item.KategoriAdi=="Anasayfa")
+                {
+                    <li>
+                        @Html.ActionLink(item.KategoriAdi, "Index", "Home", new { id = item.KategoriID }, new { @class = "urun" })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink(item.KategoriAdi, "Index", "UrunlerKategori", new { id = item.KategoriID }, new { @class = "urun" })
+                    </li>}
 
             }
         </ul>

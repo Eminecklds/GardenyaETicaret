@@ -21,18 +21,29 @@ namespace GardenyaGirisimciKadinlar.Controllers
 
             return View();
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult KullaniciListe()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             var Kullanicilar = db.Users.Where(x=>x.UserRole=="User").ToList();
             return View(Kullanicilar.ToList());
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult GirisimciListe()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             var Girisimciler = db.Users.Where(x=>x.UserRole== "Girisimci").ToList();
             return View(Girisimciler.ToList());
         }
+        [Authorize(Roles = "User")]
         public ActionResult Profil()
         {
             if (User.Identity.IsAuthenticated)
@@ -45,6 +56,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
             }
         }
         //Add view yapmadım 
+        [Authorize(Roles = "User")]
         public ActionResult Edit(string Id)
         {
             if (Id!="")
@@ -112,6 +124,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
                 //}
                 return RedirectToAction("Profil", "Liste");
         }
+        [Authorize(Roles = "Girisimci")]
         public ActionResult GProfil()
         {
             if (User.Identity.IsAuthenticated)
@@ -125,6 +138,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
                 return RedirectToAction("Login", "Account");
             }
         }
+        [Authorize(Roles = "Girisimci")]
         public ActionResult GEdit(string Id)
         {
             if (Id != "")
@@ -140,6 +154,7 @@ namespace GardenyaGirisimciKadinlar.Controllers
         }
         [HttpPost]
         //[ValidateAntiForgeryToken]
+        [Authorize(Roles = "Girisimci")]
         public ActionResult GEdit(ApplicationUser user, HttpPostedFileBase file)
         {
             //if (ModelState.IsValid)
